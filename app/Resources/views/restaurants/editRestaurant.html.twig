@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        {{ form_start(myForm) }}
+        {{ form_widget(myForm) }}
+        <input type="submit" value="Rename" class="btn btn-default" />
+        {{ form_end(myForm) }}
+    </div>
+
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
