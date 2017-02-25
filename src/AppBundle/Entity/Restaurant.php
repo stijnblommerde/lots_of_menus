@@ -8,7 +8,9 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\OneToMany;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -28,20 +30,29 @@ class Restaurant
     protected $id;
 
     /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
      * @ORM\Column(type="string")
      * @Assert\NotBlank()
      * @Assert\Regex("/^\d+$/", match=false, message="Name cannot be a number")
      * @Assert\Length(min="3", minMessage="Name is at least 3 characters long")
      */
     protected $name;
+
+    /**
+     * @OneToMany(targetEntity="AppBundle\Entity\MenuItem", mappedBy="restaurant")
+     */
+    protected $menuItems;
+
+    public function __construct() {
+        $this->menuItems = new ArrayCollection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * @return mixed
@@ -57,6 +68,22 @@ class Restaurant
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMenuItems()
+    {
+        return $this->menuItems;
+    }
+
+    /**
+     * @param mixed $menuItems
+     */
+    public function setMenuItems($menuItems)
+    {
+        $this->menuItems = $menuItems;
     }
 
 }

@@ -1,0 +1,7 @@
+{% macro build_item(item, restaurant_id) %}
+    <p class="bold">{{ item.name }}</p>
+    <p>{{ item.price }}</p>
+    <p>{{ item.description }}</p>
+    <a href="#">Edit</a>
+    <a href="#">Delete</a>
+{% endmacro %}

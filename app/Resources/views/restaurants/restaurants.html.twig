@@ -10,7 +10,7 @@
         <ul class="list-group">
             {%  for restaurant in restaurants %}
                 <li class="list-group-item">
-                    {{ restaurant.name }}
+                    <a href="{{ path('menu', {'restaurantId': restaurant.getId()}) }}">{{ restaurant.name }}</a>
                     <a class="btn btn-default btn-sm" href="{{ path('edit_restaurant', {'restaurantId': restaurant.getId()}) }}">Edit</a>
                     <a class="btn btn-default btn-sm" href="{{ path('delete_restaurant', {'restaurantId': restaurant.getId()}) }}">Delete</a>
                 </li>

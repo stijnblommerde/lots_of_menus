@@ -23,9 +23,7 @@ class RestaurantsController extends Controller
      * @Route("/restaurants", name="restaurants")
      */
     public function showRestaurantsAction() {
-//        return new Response('hello world!');
         $restaurants = $this->getDoctrine()->getRepository('AppBundle\Entity\Restaurant')->findAll();
-//        var_dump($restaurants);
         return $this->render(':restaurants:restaurants.html.twig', ['restaurants' => $restaurants]);
     }
 
