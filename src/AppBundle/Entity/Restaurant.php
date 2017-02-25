@@ -9,6 +9,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Restaurant
@@ -36,6 +37,9 @@ class Restaurant
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\NotBlank()
+     * @Assert\Regex("/^\d+$/", match=false, message="Name cannot be a number")
+     * @Assert\Length(min="3", minMessage="Name is at least 3 characters long")
      */
     protected $name;
 

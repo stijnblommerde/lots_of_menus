@@ -12,6 +12,7 @@ namespace AppBundle\Controller;
 use AppBundle\Form\Type\RestaurantType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -41,7 +42,7 @@ class RestaurantsController extends Controller
             $restaurant = $form->getData();
             $em->persist($restaurant);
             $em->flush();
-
+            $this->addFlash('success', 'Restaurant created!');
             return $this->redirectToRoute('restaurants');
         }
 
@@ -61,6 +62,7 @@ class RestaurantsController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em->flush();
+            $this->addFlash('success', 'Restaurant name changed!');
             return $this->redirectToRoute('restaurants');
         }
 
@@ -75,15 +77,16 @@ class RestaurantsController extends Controller
     public function deleteRestaurantAction(Request $request, $restaurantId) {
         $em = $this->getDoctrine()->getManager();
         $restaurant = $em->getRepository('AppBundle:Restaurant')->find($restaurantId);
-        $form = $this->createForm(RestaurantType::class);
-        echo "1";
+
+        $form = $this->createFormBuilder()->getForm();
+
         $form->handleRequest($request);
-        echo "2";
 
         if ($form->isSubmitted() && $form->isValid()) {
             echo "3";
             $em->remove($restaurant);
             $em->flush();
+            $this->addFlash('success', 'Restaurant deleted!');
             return $this->redirectToRoute('restaurants');
         }
         return $this->render(':restaurants:deleteRestaurant.html.twig', [
