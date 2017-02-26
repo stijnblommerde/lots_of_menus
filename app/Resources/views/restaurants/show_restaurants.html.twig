@@ -4,16 +4,20 @@
 <div class="container">
     <h1>
         Restaurants
-        <a class="btn btn-default btn-sm" href="{{ path('new_restaurant') }}">New</a>
+        {% if is_granted('ROLE_ADMIN') %}
+            <a class="btn btn-default btn-sm" href="{{ path('new_restaurant') }}">New</a>
+        {% endif %}
     </h1>
     <div>
         <ul class="list-group">
-            {%  for restaurant in restaurants %}
+            {% for restaurant in restaurants %}
                 <li class="list-group-item">
                     <a href="{{ path('show_menu', {'restaurantId': restaurant.getId()}) }}">
                         <h3>{{ restaurant.name }}</h3></a>
-                    <a href="{{ path('edit_restaurant', {'restaurantId': restaurant.getId()}) }}">Edit</a>
-                    <a href="{{ path('delete_restaurant', {'restaurantId': restaurant.getId()}) }}">Delete</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('edit_restaurant', {'restaurantId': restaurant.getId()}) }}">Edit</a>
+                        <a href="{{ path('delete_restaurant', {'restaurantId': restaurant.getId()}) }}">Delete</a>
+                    {% endif %}
                 </li>
             {% endfor %}
         </ul>

@@ -20,6 +20,7 @@ class RestaurantsController extends Controller
 {
 
     /**
+     * @Route("/", name="home")
      * @Route("/restaurants", name="show_restaurants")
      */
     public function showRestaurantsAction() {

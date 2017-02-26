@@ -5,7 +5,9 @@
     <div class="container">
         <h1>
             Menu
-            <a class="btn btn-default btn-sm" href="{{ path('new_menu_item', {'restaurantId': restaurant_id}) }}">New</a>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="btn btn-default btn-sm" href="{{ path('new_menu_item', {'restaurantId': restaurant_id}) }}">New</a>
+            {% endif %}
         </h1>
         <div>
             {% if menu_items %}
