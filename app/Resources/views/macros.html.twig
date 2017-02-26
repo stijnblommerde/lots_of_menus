@@ -2,6 +2,6 @@
     <p class="bold">{{ item.name }}</p>
     <p>{{ item.price }}</p>
     <p>{{ item.description }}</p>
-    <a href="#">Edit</a>
-    <a href="#">Delete</a>
+    <a href="{{ path('edit_menu_item', {'restaurantId': restaurant_id, 'menuItemId': item.id}) }}">Edit</a>
+    <a href="{{ path('delete_menu_item', {'restaurantId': restaurant_id, 'menuItemId': item.id}) }}">Delete</a>
 {% endmacro %}

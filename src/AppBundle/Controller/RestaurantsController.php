@@ -20,11 +20,11 @@ class RestaurantsController extends Controller
 {
 
     /**
-     * @Route("/restaurants", name="restaurants")
+     * @Route("/restaurants", name="show_restaurants")
      */
     public function showRestaurantsAction() {
         $restaurants = $this->getDoctrine()->getRepository('AppBundle\Entity\Restaurant')->findAll();
-        return $this->render(':restaurants:restaurants.html.twig', ['restaurants' => $restaurants]);
+        return $this->render(':restaurants:show_restaurants.html.twig', ['restaurants' => $restaurants]);
     }
 
     /**
@@ -32,19 +32,17 @@ class RestaurantsController extends Controller
      */
     public function createRestaurantAction(Request $request) {
         $form = $this->createForm(RestaurantType::class);
-
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $restaurant = $form->getData();
             $em->persist($restaurant);
             $em->flush();
             $this->addFlash('success', 'Restaurant created!');
-            return $this->redirectToRoute('restaurants');
+            return $this->redirectToRoute('show_restaurants');
         }
 
-        return $this->render(':restaurants:createRestaurant.html.twig', ['myForm' => $form->createView()]);
+        return $this->render(':restaurants:create_restaurant.html.twig', ['restaurantForm' => $form->createView()]);
     }
 
     /**
@@ -53,19 +51,15 @@ class RestaurantsController extends Controller
     public function editRestaurantAction(Request $request, $restaurantId) {
         $em = $this->getDoctrine()->getManager();
         $restaurant = $em->getRepository('AppBundle:Restaurant')->find($restaurantId);
-
         $form = $this->createForm(RestaurantType::class, $restaurant);
-
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em->flush();
             $this->addFlash('success', 'Restaurant name changed!');
-            return $this->redirectToRoute('restaurants');
+            return $this->redirectToRoute('show_restaurants');
         }
-
-        return $this->render(':restaurants:editRestaurant.html.twig', [
-            'myForm' => $form->createView()
+        return $this->render(':restaurants:edit_restaurant.html.twig', [
+            'restaurantForm' => $form->createView()
         ]);
     }
 
@@ -85,10 +79,10 @@ class RestaurantsController extends Controller
             $em->remove($restaurant);
             $em->flush();
             $this->addFlash('success', 'Restaurant deleted!');
-            return $this->redirectToRoute('restaurants');
+            return $this->redirectToRoute('show_restaurants');
         }
-        return $this->render(':restaurants:deleteRestaurant.html.twig', [
-            'myForm' => $form->createView(),
+        return $this->render(':restaurants:delete_restaurant.html.twig', [
+            'restaurantForm' => $form->createView(),
             'restaurant' => $restaurant
         ]);
     }

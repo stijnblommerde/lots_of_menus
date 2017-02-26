@@ -4,9 +4,9 @@
     <div class="container">
         <h1>Delete Restaurant</h1><hr/>
         <p>Are you sure you want to delete restaurant {{ restaurant.name }} ?</p>
-        {{ form_start(myForm) }}
+        {{ form_start(restaurantForm) }}
         <input type="submit" value="Delete" class="btn btn-default" />
-        {{ form_end(myForm) }}
+        {{ form_end(restaurantForm) }}
     </div>
 
 {% endblock %}

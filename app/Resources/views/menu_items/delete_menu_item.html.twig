@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1>Delete Menu Item</h1><hr/>
+        <p>Are you sure you want to delete menu item {{ menu_item.name }} ?</p>
+        {{ form_start(menu_form) }}
+        <input type="submit" value="Delete" class="btn btn-default" />
+        {{ form_end(menu_form) }}
+    </div>
+
+{% endblock %}

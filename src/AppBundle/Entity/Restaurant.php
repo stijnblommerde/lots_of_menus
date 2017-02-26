@@ -38,7 +38,10 @@ class Restaurant
     protected $name;
 
     /**
-     * @OneToMany(targetEntity="AppBundle\Entity\MenuItem", mappedBy="restaurant")
+     * @OneToMany(
+     *     targetEntity="AppBundle\Entity\MenuItem",
+     *     mappedBy="restaurant",
+     *     orphanRemoval=true)
      */
     protected $menuItems;
 
