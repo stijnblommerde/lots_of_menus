@@ -25,7 +25,7 @@ Menu app created with PHP and Symfony. Lists out restaurants and allows to view 
 * Fixtures: Load data from command line;
 
 **Installation**
-* clone project
+* clone project: git clone https://github.com/stijnblommerde/lots_of_menus.git
 * install dependencies: composer install
 * create empty database: php bin/console doctrine:database:create
 * create tables and relations: php bin/console doctrine:schema:update --force 
