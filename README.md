@@ -10,7 +10,7 @@ Full Stack Foundations
 Final project
 
 **Description**<br />
-Menu app created with Symfony. Lists out restaurants and allows to view the menu for each restaurant. Users need to authenticate before they can view the data. Administrators are able to edit and delete data as well.
+Menu app created with PHP and Symfony. Lists out restaurants and allows to view the menu for each restaurant. Users need to authenticate before they can view the data. Administrators are able to edit and delete data as well.
 
 **Required features**
 * Implement CRUD operations on a database;
