@@ -33,4 +33,4 @@ Menu app created with PHP and Symfony. Lists out restaurants and allows to view 
 * run server: php bin/console server:run
 * visit url: localhost:8000
 * log in as admin: username: admin, password: admin
-* log in as user: username: user, password: user
+* log in as user: username: stijn, password: test
