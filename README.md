@@ -7,7 +7,7 @@ Udacity
 Full Stack Foundations
 
 **Exercise**<br />
-I have built this app in Python & Flask in the recent past. Rebuilt the application in PHP & Symfony to show my skills for a job application.
+I have built this app in Python & Flask as a final project for this course. This instance of the application in built in PHP on the Symfony framework. I rebuilt the app to show that the knowledge can be applied to another language and framework as well.
 
 **Description**<br />
 Menu app created with PHP and Symfony. Lists out restaurants and allows to view the menu for each restaurant. Users need to authenticate before they can view the data. Administrators are able to edit and delete data as well.
